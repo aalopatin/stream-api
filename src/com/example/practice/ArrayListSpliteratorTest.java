@@ -1,13 +1,10 @@
-package com.example;
+package com.example.practice;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
-public class Main {
+public class ArrayListSpliteratorTest {
     public static void main(String[] args) {
         List<String> list = new ArrayList<>() {{
             add("Str0");
@@ -21,10 +18,9 @@ public class Main {
             add("Str8");
             add("Str9");
         }};
-
-        list
-                .stream()
-                .parallel()
-                .forEach(System.out::println);
+        StreamSupport.stream(new ArrayListSpliterator(list), false)
+                .forEach(
+                        System.out::println
+                );
     }
 }
